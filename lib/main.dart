@@ -43,7 +43,16 @@ class _myquoteState extends State<myquote> {
           // crossAxisAlignment: CrossAxisAlignment.stretch,
           // mainAxisAlignment: MainAxisAlignment.end,
           // children: quotes.map((q) => QuoteTemplate(q)).toList(),
-          children: quotes.map((q) => QuoteCard(q: q)).toList(),
+          children: quotes
+              .map((q) => QuoteCard(
+                    q: q,
+                    deletefun: () {
+                      setState(() {
+                        quotes.remove(q);
+                      });
+                    },
+                  ))
+              .toList(),
         ));
   }
 }
